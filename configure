@@ -23,7 +23,11 @@ if [ "$CC" = "" ]; then
 fi
 
 if [ "$SDL2CONFIG" = "" ]; then
-	SDL2CONFIG=sdl2-config
+	if [ "$SYSROOT" != "" ]; then
+		SDL2CONFIG="$SYSROOT/usr/bin/sdl2-config"
+	else
+		SDL2CONFIG="sdl2-config"
+	fi
 fi
 
 DEBUG_OUTPUT="/dev/null"
